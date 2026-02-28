@@ -246,41 +246,44 @@ export default function CardFrontSide({ data, accessToken }: { data: CardData; a
         {/* Фото + ФИО */}
         <div className="flex items-start" style={{ gap: '22px', marginBottom: '24px' }}>
           {/* Фото */}
-          <div className="flex-shrink-0">
-            {data.photo ? (
-              typeof data.photo === 'string' ? (
-                <img 
-                  src={data.photo} 
-                  alt="Фото" 
-                  crossOrigin="anonymous"
-                  className="rounded-lg object-cover border-2 border-gray-300"
-                  style={{ width: '122px', height: '122px' }}
-                />
+          {/* Для сохранённых карт (с id) фото показывается только через SVG, не показываем fallback */}
+          {!data.id && (
+            <div className="flex-shrink-0">
+              {data.photo ? (
+                typeof data.photo === 'string' ? (
+                  <img 
+                    src={data.photo} 
+                    alt="Фото" 
+                    crossOrigin="anonymous"
+                    className="rounded-lg object-cover border-2 border-gray-300"
+                    style={{ width: '122px', height: '122px' }}
+                  />
+                ) : (
+                  <img 
+                    src={URL.createObjectURL(data.photo)} 
+                    alt="Фото" 
+                    className="rounded-lg object-cover border-2 border-gray-300"
+                    style={{ width: '122px', height: '122px' }}
+                  />
+                )
               ) : (
-                <img 
-                  src={URL.createObjectURL(data.photo)} 
-                  alt="Фото" 
-                  className="rounded-lg object-cover border-2 border-gray-300"
+                <div 
+                  className="rounded-lg bg-gray-100 flex items-center justify-center border-2 border-gray-300"
                   style={{ width: '122px', height: '122px' }}
-                />
-              )
-            ) : (
-              <div 
-                className="rounded-lg bg-gray-100 flex items-center justify-center border-2 border-gray-300"
-                style={{ width: '122px', height: '122px' }}
-              >
-                <svg 
-                  className="text-gray-400" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                  style={{ width: '58px', height: '58px' }}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-            )}
-          </div>
+                  <svg 
+                    className="text-gray-400" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                    style={{ width: '58px', height: '58px' }}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* ФИО */}
           <div style={{ flex: 1, minWidth: 0 }}>
