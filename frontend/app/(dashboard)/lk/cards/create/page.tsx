@@ -20,6 +20,9 @@ function CreateCardPageInner() {
   const [tempImage, setTempImage] = useState<string | null>(null)
   const [loading, setLoading] = useState(!!editId)
   const [cardData, setCardData] = useState({
+    // Идентификатор сохранённой карты (нужен для корректного превью без повторной загрузки фото)
+    id: undefined as number | undefined,
+
     // Персональные данные
     lastName: '',
     firstName: '',
@@ -92,6 +95,7 @@ function CreateCardPageInner() {
           : ''
 
         setCardData({
+          id: card.id,
           lastName: card.last_name || '',
           firstName: card.first_name || '',
           middleName: card.middle_name || '',
