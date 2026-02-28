@@ -84,11 +84,18 @@ function CreateCardPageInner() {
 
       if (data.success && data.card) {
         const card = data.card
+
+        // Нормализуем дату рождения в формат, который понимает <input type="date"> (yyyy-MM-dd)
+        const rawBirthDate = card.birth_date || ''
+        const normalizedBirthDate = rawBirthDate
+          ? (rawBirthDate.includes('T') ? rawBirthDate.split('T')[0] : rawBirthDate)
+          : ''
+
         setCardData({
           lastName: card.last_name || '',
           firstName: card.first_name || '',
           middleName: card.middle_name || '',
-          birthDate: card.birth_date || '',
+          birthDate: normalizedBirthDate,
           photo: card.photo ? `${process.env.NEXT_PUBLIC_API_URL || ''}/uploads/avatars/${card.photo}` as any : null,
           bloodType: card.blood_type || '',
           rhFactor: card.rh_factor || '',
