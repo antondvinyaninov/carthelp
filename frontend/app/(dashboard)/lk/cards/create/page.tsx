@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import CardPreview from '@/components/cards/CardPreview'
 import OnlinePagePreview from '@/components/cards/OnlinePagePreview'
 import ImageCropModal from '@/components/ImageCropModal'
 
-export default function CreateCardPage() {
+function CreateCardPageInner() {
   const { data: session } = useSession()
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -914,5 +914,19 @@ export default function CreateCardPage() {
         />
       )}
     </div>
+  )
+}
+
+export default function CreateCardPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+          <div className="text-gray-600">Загрузка формы карты...</div>
+        </div>
+      }
+    >
+      <CreateCardPageInner />
+    </Suspense>
   )
 }
