@@ -1,0 +1,61 @@
+<svg width="540" height="320" viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">
+  <defs></defs>
+  <!-- Белый фон -->
+  <rect width="540" height="320" fill="#FFFFFF" rx="12"/>
+  
+  <!-- Красный хедер -->
+  <rect width="540" height="40" fill="#DC2626" rx="12" ry="0"/>
+  <rect width="540" height="28" fill="#DC2626"/>
+  
+  <!-- Текст хедера -->
+  <text x="270" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">КАРТА ЭКСТРЕННОЙ ПОМОЩИ</text>
+  
+  <!-- Рамка для фото -->
+  <rect x="24" y="60" width="90" height="90" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2" rx="8"/>
+  
+  <!-- Placeholder для фото -->
+  <text x="69" y="110" font-family="Arial, sans-serif" font-size="12" fill="#9CA3AF" text-anchor="middle">ФОТО</text>
+  
+  <!-- Placeholder для ФИО -->
+  <text x="130" y="80" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#111827">{{lastName}}</text>
+  <text x="130" y="106" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#111827">{{firstName}}</text>
+  <text x="130" y="132" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#111827">{{middleName}}</text>
+  
+  <!-- Заголовок контактов -->
+  <text x="24" y="174" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#DC2626">ЭКСТРЕННЫЕ КОНТАКТЫ</text>
+  <line x1="174" y1="171" x2="516" y2="171" stroke="#DC2626" stroke-width="2"/>
+  
+  <!-- Контакт 1 -->
+  <text x="24" y="194" font-family="Arial, sans-serif" font-size="12" fill="#4B5563">{{contact1Relationship}}:</text>
+  <text x="24" y="208" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#111827">{{contact1Name}}</text>
+  <text x="24" y="224" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#111827">{{contact1Phone}}</text>
+  
+  <!-- Контакт 2 -->
+  <text x="282" y="194" font-family="Arial, sans-serif" font-size="12" fill="#4B5563">{{contact2Relationship}}:</text>
+  <text x="282" y="208" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#111827">{{contact2Name}}</text>
+  <text x="282" y="224" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#111827">{{contact2Phone}}</text>
+  
+  <!-- Футер -->
+  <!-- Белая часть -->
+  <rect y="276" width="162" height="44" fill="#FFFFFF"/>
+  
+  <!-- QR код placeholder -->
+  <rect x="24" y="282" width="32" height="32" fill="#E5E7EB" rx="2"/>
+  <text x="40" y="302" font-family="Arial, sans-serif" font-size="8" fill="#9CA3AF" text-anchor="middle">QR</text>
+  
+  <!-- carthelp.ru -->
+  <text x="64" y="302" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#4B5563">carthelp.ru</text>
+  
+  <!-- Красная часть с диагональю -->
+  <polygon points="162,276 182,276 540,276 540,320 162,320" fill="#DC2626"/>
+  
+  <!-- Текст в футере -->
+  <text x="206" y="290" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Телефон экстренных</text>
+  <text x="206" y="302" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">спасательных служб</text>
+  
+  <!-- 112 -->
+  <text x="480" y="304" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#FFFFFF" text-anchor="middle">112</text>
+  
+  <!-- Граница карты -->
+  <rect width="540" height="320" fill="none" stroke="#E5E7EB" stroke-width="2" rx="12"/>
+</svg>

@@ -1,0 +1,35 @@
+<svg width="600" height="378" viewBox="0 0 540 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Белый фон -->
+  <rect width="540" height="320" fill="#FFFFFF" rx="12"/>
+  
+  <!-- QR код блок -->
+  <rect x="24" y="24" width="112" height="136" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1" rx="8"/>
+  
+  <!-- QR код placeholder -->
+  <rect x="32" y="32" width="96" height="96" fill="#E5E7EB" rx="4"/>
+  <text x="80" y="84" font-family="Arial, sans-serif" font-size="12" fill="#9CA3AF" text-anchor="middle">QR CODE</text>
+  
+  <!-- Текст под QR -->
+  <text x="80" y="144" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#374151" text-anchor="middle">СКАНИРУЙТЕ</text>
+  <text x="80" y="156" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#374151" text-anchor="middle">ТЕЛЕФОНОМ</text>
+  
+  <!-- Медицинская информация -->
+  <!-- Группа крови -->
+  <text x="152" y="40" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#DC2626">ГРУППА КРОВИ</text>
+  <text x="152" y="64" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#111827">{{bloodType}}</text>
+  
+  <!-- Аллергии -->
+  <text x="152" y="104" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#DC2626">АЛЛЕРГИИ</text>
+  <text x="152" y="120" font-family="Arial, sans-serif" font-size="10" fill="#374151">{{allergy1}}</text>
+  <text x="152" y="132" font-family="Arial, sans-serif" font-size="10" fill="#374151">{{allergy2}}</text>
+  <text x="152" y="144" font-family="Arial, sans-serif" font-size="10" fill="#374151">{{allergy3}}</text>
+  
+  <!-- Хронические заболевания -->
+  <text x="152" y="172" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#DC2626">ХРОНИЧЕСКИЕ ЗАБОЛЕВАНИЯ</text>
+  <text x="152" y="188" font-family="Arial, sans-serif" font-size="10" fill="#374151">{{disease1}}</text>
+  <text x="152" y="200" font-family="Arial, sans-serif" font-size="10" fill="#374151">{{disease2}}</text>
+  <text x="152" y="212" font-family="Arial, sans-serif" font-size="10" fill="#374151">{{disease3}}</text>
+  
+  <!-- Граница карты -->
+  <rect width="540" height="320" fill="none" stroke="#E5E7EB" stroke-width="2" rx="12"/>
+</svg>

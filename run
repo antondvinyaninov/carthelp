@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+# Очистка портов
+lsof -ti:3000,3001 | xargs kill -9 2>/dev/null || true
+
+# Запуск бэкенда
+cd backend
+npm install
+npm run dev &
+
+# Запуск фронтенда
+cd ../frontend
+npm install
+npm run dev

@@ -1,0 +1,26 @@
+<svg width="600" height="378" viewBox="0 0 600 378" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_84_20)">
+<path d="M586.667 0H13.3333C5.96954 0 0 6.34636 0 14.175V363.825C0 371.654 5.96954 378 13.3333 378H586.667C594.031 378 600 371.654 600 363.825V14.175C600 6.34636 594.031 0 586.667 0Z" fill="white"/>
+<path d="M262.357 17H38.6429C28.3467 17 20 24.7692 20 34.3529V294.647C20 304.231 28.3467 312 38.6429 312H262.357C272.653 312 281 304.231 281 294.647V34.3529C281 24.7692 272.653 17 262.357 17Z" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.14564"/>
+<text fill="#9CA3AF" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="13.7477" letter-spacing="0em"><tspan x="117.566" y="149.116">QR CODE</tspan></text>
+<text fill="#374151" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="11.4564" font-weight="bold" letter-spacing="0em"><tspan x="71.746" y="298.472"> &#x421;&#x41a;&#x410;&#x41d;&#x418;&#x420;&#x423;&#x419;&#x422;&#x415;&#x422;&#x415;&#x41b;&#x415;&#x424;&#x41e;&#x41d;&#x41e;&#x41c;</tspan></text>
+<text fill="#DC2626" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="303" y="33.7402">&#x413;&#x420;&#x423;&#x41f;&#x41f;&#x410; &#x41a;&#x420;&#x41e;&#x412;&#x418;</tspan></text>
+<text fill="#111827" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="35" font-weight="bold" letter-spacing="0em"><tspan x="303" y="65.3088">{{bloodType}}</tspan></text>
+<text fill="#DC2626" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="303" y="107.34">&#x410;&#x41b;&#x41b;&#x415;&#x420;&#x413;&#x418;&#x418;</tspan></text>
+<text fill="#374151" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="24" letter-spacing="0em"><tspan x="303" y="134.183">{{allergy1}}</tspan></text>
+<text fill="#374151" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="24" letter-spacing="0em"><tspan x="303" y="161.32">{{allergy2}}</tspan></text>
+<text fill="#374151" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="24" letter-spacing="0em"><tspan x="303" y="188.32">{{allergy3}}</tspan></text>
+<text fill="#DC2626" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="303" y="221.665">&#x425;&#x420;&#x41e;&#x41d;&#x418;&#x427;&#x415;&#x421;&#x41a;&#x418;&#x415; &#x417;&#x410;&#x411;&#x41e;&#x41b;&#x415;&#x412;&#x410;&#x41d;&#x418;&#x42f;</tspan></text>
+<text fill="#374151" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="24" letter-spacing="0em"><tspan x="303" y="248.508">{{disease1}}</tspan></text>
+<text fill="#374151" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="24" letter-spacing="0em"><tspan x="303" y="274.32">{{disease2}}</tspan></text>
+<text fill="#374151" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="24" letter-spacing="0em"><tspan x="303" y="300.32">{{disease3}}</tspan></text>
+<path d="M0 326H31.746H600V378H0V326Z" fill="#DC2626"/>
+<path d="M586.667 0H13.3333C5.96954 0 0 6.34636 0 14.175V363.825C0 371.654 5.96954 378 13.3333 378H586.667C594.03 378 600 371.654 600 363.825V14.175C600 6.34636 594.03 0 586.667 0Z" stroke="#E5E7EB" stroke-width="2.29129"/>
+<text fill="white" style="white-space: pre" xml:space="preserve" font-family="Arial" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="20.0625" y="353.547">&#x41f;&#x440;&#x438; &#x44d;&#x43a;&#x441;&#x442;&#x440;&#x435;&#x43d;&#x43d;&#x43e;&#x439; &#x441;&#x438;&#x442;&#x443;&#x430;&#x446;&#x438;&#x438; &#x43f;&#x43e;&#x437;&#x432;&#x43e;&#x43d;&#x438;&#x442;&#x435; &#x43a;&#x43e;&#x43d;&#x442;&#x430;&#x43a;&#x442;&#x43d;&#x44b;&#x43c; &#x43b;&#x438;&#x446;&#x430;&#x43c; &#x441; &#x44d;&#x442;&#x43e;&#x439; &#x43a;&#x430;&#x440;&#x442;&#x44b;.</tspan></text>
+</g>
+<defs>
+<clipPath id="clip0_84_20">
+<rect width="600" height="378" fill="white"/>
+</clipPath>
+</defs>
+</svg>
