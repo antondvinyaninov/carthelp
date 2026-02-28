@@ -52,8 +52,7 @@ RUN adduser --system --uid 1001 nextjs
 COPY --from=backend-deps --chown=nextjs:nodejs /app/backend/node_modules ./backend/node_modules
 COPY --chown=nextjs:nodejs backend ./backend
 
-# Копируем frontend
-COPY --from=frontend-builder --chown=nextjs:nodejs /app/frontend/public ./frontend/public
+# Копируем frontend (standalone-сборка Next.js)
 COPY --from=frontend-builder --chown=nextjs:nodejs /app/frontend/.next/standalone ./frontend
 COPY --from=frontend-builder --chown=nextjs:nodejs /app/frontend/.next/static ./frontend/.next/static
 
