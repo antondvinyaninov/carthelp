@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import CardPreview from '@/components/cards/CardPreview'
 import OnlinePagePreview from '@/components/cards/OnlinePagePreview'
 import ImageCropModal from '@/components/ImageCropModal'
+import { apiUrl } from '@/utils/api'
 
 function CreateCardPageInner() {
   const { data: session } = useSession()
@@ -74,7 +75,7 @@ function CreateCardPageInner() {
   const loadCardData = async (cardId: string) => {
     try {
       setLoading(true)
-      const response = await fetch(`http://localhost:3001/api/cards/${cardId}`, {
+      const response = await fetch(apiUrl(`api/cards/${cardId}`), {
         headers: {
           'Authorization': `Bearer ${session?.accessToken}`
         }
@@ -88,7 +89,7 @@ function CreateCardPageInner() {
           firstName: card.first_name || '',
           middleName: card.middle_name || '',
           birthDate: card.birth_date || '',
-          photo: card.photo ? `http://localhost:3001/uploads/avatars/${card.photo}` as any : null,
+          photo: card.photo ? `${process.env.NEXT_PUBLIC_API_URL || ''}/uploads/avatars/${card.photo}` as any : null,
           bloodType: card.blood_type || '',
           rhFactor: card.rh_factor || '',
           allergies: card.allergies ? card.allergies.split(', ').concat(['', '', '']).slice(0, 3) : ['', '', ''],
@@ -269,8 +270,8 @@ function CreateCardPageInner() {
 
       // Используем разные endpoints для создания и редактирования
       const url = editId 
-        ? `http://localhost:3001/api/cards/${editId}`
-        : 'http://localhost:3001/api/cards/create'
+        ? apiUrl(`api/cards/${editId}`)
+        : apiUrl('api/cards/create')
       
       const method = editId ? 'PUT' : 'POST'
 

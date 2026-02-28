@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import CardPreview from '@/components/cards/CardPreview'
+import { apiUrl } from '@/utils/api'
 
 interface Card {
   id: number
@@ -45,7 +46,7 @@ export default function LKPage() {
 
   const handleDeleteCard = async (cardId: number) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/cards/${cardId}`, {
+      const response = await fetch(apiUrl(`api/cards/${cardId}`), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${session?.accessToken}`
@@ -81,7 +82,7 @@ export default function LKPage() {
 
   const fetchCards = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/cards/my-cards', {
+      const response = await fetch(apiUrl('api/cards/my-cards'), {
         headers: {
           'Authorization': `Bearer ${session?.accessToken}`
         }
@@ -170,7 +171,7 @@ export default function LKPage() {
                 firstName: card.first_name || '',
                 middleName: card.middle_name || '',
                 birthDate: card.birth_date || '',
-                photo: card.photo ? `http://localhost:3001/uploads/avatars/${card.photo}` : null,
+                photo: card.photo ? `${process.env.NEXT_PUBLIC_API_URL || ''}/uploads/avatars/${card.photo}` : null,
                 bloodType: card.blood_type || '',
                 rhFactor: card.rh_factor || '',
                 allergies: card.allergies ? card.allergies.split(', ').slice(0, 3) : ['', '', ''],

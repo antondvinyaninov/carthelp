@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import CardFrontSide from './CardFrontSide'
 import CardBackSide from './CardBackSide'
+import { apiUrl } from '@/utils/api'
 
 interface CardData {
   id?: number
@@ -39,7 +40,7 @@ async function fetchCardPngBlob(
   side: 'front' | 'back',
   accessToken: string
 ): Promise<Blob> {
-  const response = await fetch(`http://localhost:3001/api/cards/${cardId}/png/${side}`, {
+  const response = await fetch(apiUrl(`api/cards/${cardId}/png/${side}`), {
     headers: {
       'Authorization': `Bearer ${accessToken}`
     }
@@ -94,7 +95,7 @@ export default function CardPreview({ data, cardSide, onFlip, showPrintButton = 
     try {
       setIsExporting(true)
 
-      const response = await fetch(`http://localhost:3001/api/cards/${data.id}/pdf/both`, {
+      const response = await fetch(apiUrl(`api/cards/${data.id}/pdf/both`), {
         headers: {
           'Authorization': `Bearer ${accessToken}`
         }
@@ -132,7 +133,7 @@ export default function CardPreview({ data, cardSide, onFlip, showPrintButton = 
       setIsExporting(true)
 
       // Скачиваем обе стороны в одном файле
-      const response = await fetch(`http://localhost:3001/api/cards/${data.id}/png/both`, {
+      const response = await fetch(apiUrl(`api/cards/${data.id}/png/both`), {
         headers: {
           'Authorization': `Bearer ${accessToken}`
         }

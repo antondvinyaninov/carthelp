@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import OnlinePagePreview from '@/components/cards/OnlinePagePreview'
+import { apiUrl } from '@/utils/api'
 
 interface CardData {
   id: number
@@ -45,7 +46,7 @@ export default function PublicCardPage() {
 
   const fetchCard = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/cards/public/${code}`)
+      const response = await fetch(apiUrl(`api/cards/public/${code}`))
       const data = await response.json()
 
       if (data.success) {
@@ -142,7 +143,7 @@ export default function PublicCardPage() {
     firstName: card.first_name || '',
     middleName: card.middle_name || '',
     birthDate: card.birth_date || '',
-    photo: card.photo ? `http://localhost:3001/uploads/avatars/${card.photo}` : null,
+    photo: card.photo ? `${process.env.NEXT_PUBLIC_API_URL || ''}/uploads/avatars/${card.photo}` : null,
     bloodType: card.blood_type || '',
     rhFactor: card.rh_factor || '',
     allergies: card.allergies ? card.allergies.split(', ').slice(0, 3) : ['', '', ''],

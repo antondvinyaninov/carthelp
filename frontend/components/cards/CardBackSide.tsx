@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import QRCode from 'qrcode'
+import { apiUrl } from '@/utils/api'
 
 interface CardData {
   id?: number
@@ -38,12 +39,12 @@ export default function CardBackSide({ data, accessToken }: { data: CardData; ac
         let response: Response
 
         if (data.id) {
-          response = await fetch(`http://localhost:3001/api/cards/${data.id}/svg/back`, {
+          response = await fetch(apiUrl(`api/cards/${data.id}/svg/back`), {
             headers: { Authorization: `Bearer ${accessToken}` },
             signal: controller.signal
           })
         } else {
-          response = await fetch('http://localhost:3001/api/cards/svg/preview/back', {
+          response = await fetch(apiUrl('api/cards/svg/preview/back'), {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${accessToken}`,
