@@ -101,10 +101,11 @@ export default function CardFrontSide({ data, accessToken }: { data: CardData; a
         // Если есть новое фото (File) - используем его для превью, даже для сохранённых карт
         // Это нужно для случая, когда пользователь загрузил новое фото в редакторе
         const hasNewPhoto = data.photo instanceof File
-        
-        if (hasNewPhoto) {
+
+        if (hasNewPhoto && data.photo instanceof File) {
           // Новое фото - обрабатываем его
-          photoDataUrl = await fileToDataUrl(data.photo)
+          const newPhotoFile: File = data.photo
+          photoDataUrl = await fileToDataUrl(newPhotoFile)
         } else if (!data.id) {
           // Для черновых карт без id обрабатываем фото из состояния
           if (typeof data.photo === 'string' && data.photo) {
