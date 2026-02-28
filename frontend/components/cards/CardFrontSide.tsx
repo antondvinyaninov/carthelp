@@ -97,13 +97,20 @@ export default function CardFrontSide({ data, accessToken }: { data: CardData; a
     const timer = window.setTimeout(async () => {
       try {
         let photoDataUrl = ''
-        if (data.photo instanceof File) {
-          photoDataUrl = await fileToDataUrl(data.photo)
-        } else if (typeof data.photo === 'string' && data.photo) {
-          if (data.photo.startsWith('data:image/')) {
-            photoDataUrl = data.photo
-          } else if (data.photo.startsWith('http://') || data.photo.startsWith('https://')) {
-            photoDataUrl = await urlToDataUrl(data.photo, controller.signal)
+
+        // ВАЖНО:
+        // Для уже сохранённых карт (есть data.id) фото уже есть на бэкенде.
+        // Нет смысла ещё раз тянуть его в браузер и конвертировать — это тормозит загрузку.
+        // Поэтому photoDataUrl считаем только для черновых карт (без id).
+        if (!data.id) {
+          if (data.photo instanceof File) {
+            photoDataUrl = await fileToDataUrl(data.photo)
+          } else if (typeof data.photo === 'string' && data.photo) {
+            if (data.photo.startsWith('data:image/')) {
+              photoDataUrl = data.photo
+            } else if (data.photo.startsWith('http://') || data.photo.startsWith('https://')) {
+              photoDataUrl = await urlToDataUrl(data.photo, controller.signal)
+            }
           }
         }
 
