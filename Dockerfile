@@ -40,6 +40,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV BACKEND_PORT=3001
 
 # Устанавливаем необходимые пакеты
 RUN apk add --no-cache dumb-init

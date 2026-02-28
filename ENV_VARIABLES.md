@@ -86,11 +86,10 @@ PORT=3000
 NODE_ENV=production
 DATABASE_URL=postgresql://username:password@host:5432/database_name
 JWT_SECRET=твой-очень-длинный-и-безопасный-секретный-ключ-минимум-32-символа
-PORT=3001
+BACKEND_PORT=3001
 NEXT_PUBLIC_API_URL=http://localhost:3001
 NEXTAUTH_URL=https://твой-домен.ru
 NEXTAUTH_SECRET=твой-очень-длинный-и-безопасный-секретный-ключ-для-nextauth
-PORT=3000
 ```
 
 ---
@@ -108,9 +107,8 @@ PORT=3000
    ```
 4. **NEXTAUTH_URL** - должен быть полным URL твоего домена (с https://)
 5. **NEXT_PUBLIC_API_URL** - обязательно `http://localhost:3001`, так как оба сервиса в одном контейнере
-6. **PORT** - есть два PORT, но они используются разными сервисами:
-   - `PORT=3001` для Backend
-   - `PORT=3000` для Frontend (в Dockerfile это уже настроено)
+6. **PORT** — в Easypanel платформенный `PORT` используется для фронтенда (Next.js) и может быть, например, `80`.  
+   Backend теперь использует **только** `BACKEND_PORT=3001`, поэтому конфликта портов не будет.
 
 ---
 
