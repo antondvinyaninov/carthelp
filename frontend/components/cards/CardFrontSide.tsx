@@ -98,14 +98,16 @@ export default function CardFrontSide({ data, accessToken }: { data: CardData; a
       try {
         let photoDataUrl = ''
 
-        // ВАЖНО:
-        // Для уже сохранённых карт (есть data.id) фото уже есть на бэкенде.
-        // Нет смысла ещё раз тянуть его в браузер и конвертировать — это тормозит загрузку.
-        // Поэтому photoDataUrl считаем только для черновых карт (без id).
-        if (!data.id) {
-          if (data.photo instanceof File) {
-            photoDataUrl = await fileToDataUrl(data.photo)
-          } else if (typeof data.photo === 'string' && data.photo) {
+        // Если есть новое фото (File) - используем его для превью, даже для сохранённых карт
+        // Это нужно для случая, когда пользователь загрузил новое фото в редакторе
+        const hasNewPhoto = data.photo instanceof File
+        
+        if (hasNewPhoto) {
+          // Новое фото - обрабатываем его
+          photoDataUrl = await fileToDataUrl(data.photo)
+        } else if (!data.id) {
+          // Для черновых карт без id обрабатываем фото из состояния
+          if (typeof data.photo === 'string' && data.photo) {
             if (data.photo.startsWith('data:image/')) {
               photoDataUrl = data.photo
             } else if (data.photo.startsWith('http://') || data.photo.startsWith('https://')) {
@@ -115,7 +117,9 @@ export default function CardFrontSide({ data, accessToken }: { data: CardData; a
         }
 
         let response: Response
-        if (data.id) {
+        // Если есть новое фото (File) или карта ещё не сохранена - используем превью API
+        // Иначе используем готовый SVG с бэкенда
+        if (data.id && !hasNewPhoto) {
           response = await fetch(apiUrl(`api/cards/${data.id}/svg/front`), {
             headers: { Authorization: `Bearer ${accessToken}` },
             signal: controller.signal
@@ -246,8 +250,10 @@ export default function CardFrontSide({ data, accessToken }: { data: CardData; a
         {/* Фото + ФИО */}
         <div className="flex items-start" style={{ gap: '22px', marginBottom: '24px' }}>
           {/* Фото */}
-          {/* Для сохранённых карт (с id) фото показывается только через SVG, не показываем fallback */}
-          {!data.id && (
+          {/* Показываем fallback фото:
+              - Для новых карт (без id) - всегда
+              - Для сохранённых карт (с id) - только пока SVG не загрузился (svgUrl === null) */}
+          {(!data.id || !svgUrl) && (
             <div className="flex-shrink-0">
               {data.photo ? (
                 typeof data.photo === 'string' ? (
@@ -257,6 +263,10 @@ export default function CardFrontSide({ data, accessToken }: { data: CardData; a
                     crossOrigin="anonymous"
                     className="rounded-lg object-cover border-2 border-gray-300"
                     style={{ width: '122px', height: '122px' }}
+                    onError={(e) => {
+                      // Если фото не загрузилось (404), скрываем его
+                      (e.target as HTMLImageElement).style.display = 'none'
+                    }}
                   />
                 ) : (
                   <img 

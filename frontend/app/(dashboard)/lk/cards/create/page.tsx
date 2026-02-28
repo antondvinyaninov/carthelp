@@ -94,13 +94,20 @@ function CreateCardPageInner() {
           ? (rawBirthDate.includes('T') ? rawBirthDate.split('T')[0] : rawBirthDate)
           : ''
 
+        // Извлекаем только имя файла из пути (если в БД хранится полный путь)
+        // В БД может быть либо просто имя файла, либо путь вида /uploads/avatars/filename.jpg
+        const photoFileName = card.photo 
+          ? (card.photo.includes('/') ? card.photo.split('/').pop() : card.photo)
+          : null
+
         setCardData({
           id: card.id,
           lastName: card.last_name || '',
           firstName: card.first_name || '',
           middleName: card.middle_name || '',
           birthDate: normalizedBirthDate,
-          photo: card.photo ? `${process.env.NEXT_PUBLIC_API_URL || ''}/uploads/avatars/${card.photo}` as any : null,
+          // Для сохранённых карт передаём только имя файла, URL формируется в компонентах
+          photo: photoFileName ? `${process.env.NEXT_PUBLIC_API_URL || ''}/uploads/avatars/${photoFileName}` as any : null,
           bloodType: card.blood_type || '',
           rhFactor: card.rh_factor || '',
           allergies: card.allergies ? card.allergies.split(', ').concat(['', '', '']).slice(0, 3) : ['', '', ''],
