@@ -108,6 +108,35 @@ export default function PublicCardPage() {
     )
   }
 
+  // Расширенная информация (совмещаем плоские поля и JSON additional_info)
+  const rawAdditionalInfo: any = (card as any).additional_info || {}
+
+  const additionalInfo = {
+    medicalNotes: card.medical_notes || rawAdditionalInfo.medicalNotes || '',
+    doctorsInfo: card.doctors_info || rawAdditionalInfo.doctorsInfo || '',
+    insuranceInfo: card.insurance_info || rawAdditionalInfo.insuranceInfo || '',
+    additionalContacts: card.additional_contacts || rawAdditionalInfo.additionalContacts || '',
+    specialInstructions: card.special_instructions || rawAdditionalInfo.specialInstructions || '',
+    snils: (card as any).snils || rawAdditionalInfo.snils || '',
+    omsPolicyNumber: (card as any).oms_policy_number || rawAdditionalInfo.omsPolicyNumber || '',
+    dmsInsurance: (card as any).dms_insurance || rawAdditionalInfo.dmsInsurance || '',
+    disabilityGroup: (card as any).disability_group || rawAdditionalInfo.disabilityGroup || '',
+    procedureContraindications:
+      (card as any).procedure_contraindications || rawAdditionalInfo.procedureContraindications || '',
+    organDonationConsent: Boolean(
+      (card as any).organ_donation_consent ?? rawAdditionalInfo.organDonationConsent ?? false
+    ),
+    dnrRefusal: Boolean((card as any).dnr_refusal ?? rawAdditionalInfo.dnrRefusal ?? false),
+    additionalWishes: (card as any).additional_wishes || rawAdditionalInfo.additionalWishes || '',
+    vaccinationHistory: (card as any).vaccination_history || rawAdditionalInfo.vaccinationHistory || '',
+    currentMedications: (card as any).current_medications || rawAdditionalInfo.currentMedications || '',
+    fullAllergiesList: (card as any).full_allergies_list || rawAdditionalInfo.fullAllergiesList || '',
+    surgeriesHistory: (card as any).surgeries_history || rawAdditionalInfo.surgeriesHistory || '',
+    attendingPhysician: (card as any).attending_physician || rawAdditionalInfo.attendingPhysician || '',
+    additionalMedicalNotes:
+      (card as any).additional_medical_notes || rawAdditionalInfo.additionalMedicalNotes || ''
+  }
+
   const onlinePreviewData = {
     lastName: card.last_name || '',
     firstName: card.first_name || '',
@@ -118,23 +147,18 @@ export default function PublicCardPage() {
     rhFactor: card.rh_factor || '',
     allergies: card.allergies ? card.allergies.split(', ').slice(0, 3) : ['', '', ''],
     chronicDiseases: card.chronic_diseases ? card.chronic_diseases.split(', ').slice(0, 3) : ['', '', ''],
-    contacts: card.contacts && card.contacts.length > 0
-      ? card.contacts.slice(0, 2).map((c) => ({
-          name: c.name || '',
-          phone: c.phone || '',
-          relationship: c.relationship || ''
-        }))
-      : [
-          { name: '', phone: '', relationship: '' },
-          { name: '', phone: '', relationship: '' }
-        ],
-    additionalInfo: {
-      medicalNotes: card.medical_notes || '',
-      doctorsInfo: card.doctors_info || '',
-      insuranceInfo: card.insurance_info || '',
-      additionalContacts: card.additional_contacts || '',
-      specialInstructions: card.special_instructions || ''
-    }
+    contacts:
+      card.contacts && card.contacts.length > 0
+        ? card.contacts.slice(0, 2).map((c) => ({
+            name: c.name || '',
+            phone: c.phone || '',
+            relationship: c.relationship || ''
+          }))
+        : [
+            { name: '', phone: '', relationship: '' },
+            { name: '', phone: '', relationship: '' }
+          ],
+    additionalInfo
   }
 
   return (
